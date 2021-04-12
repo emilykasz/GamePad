@@ -10,6 +10,9 @@ float heroSpeed;
 boolean isDrawn;
 float heroDir;
 int heroFrame;
+int curTileX;
+int curTileY;
+int curTile;
 
 Metro heroFrameTimer = Metro(250);
 
@@ -18,7 +21,7 @@ void initHero() {
   heroY = screenH / 2;
   heroW = 32; 
   heroH = 32; 
-  heroSpeed = 3;
+  heroSpeed = 0.5;
   isDrawn = false;
   heroFrame = 0;
 }
@@ -68,42 +71,17 @@ void drawHero() {
  }
 
    
-//  //Leo wags his tail 
+//  //Leos eyes light up hearts
   if (buttonBuffer[0] == 1) {
       heroFrame = 9;
   }
   
 
-  //makes sure the player does not run off the screen
-//  if (nextX + 32 > 318 ) {
-//    heroX = 318 - 32;
-//    nextX = heroX;
-//  }
-//  if (nextX < 2) {
-//    heroX = 2;
-//    nextX = heroX;
-//  }
-//  if (nextY + 32 > 238) {
-//    heroY = 238 - 32;
-//    nextY = heroY;
-//  }
-//  if (nextY  < 2) {
-//    heroY = 2 ;
-//    nextY = heroY; 
-//  }
+  boolean canMove = checkMove(currentMode, nextX, nextY, heroW, heroH);
 
-  //drawLevel(0);
-
-//  if (isDrawn == false) {
-//    tft.updateScreen();
-//    isDrawn = true;
-//  }
-
-  checkMove(currentMode, nextX, nextY, heroW, heroH);
-
-  if (checkMove() == true) {
+  if (canMove == true) {
     heroX=nextX; 
-    heroY=nextY
+    heroY=nextY;
   }
 
   //clips the area and draws the character
@@ -111,8 +89,9 @@ void drawHero() {
   tft.drawRGBBitmap(heroX, heroY, Leo_PIX[heroFrame], Leo_MASK[heroFrame], 32, 32);
   //tft.updateScreen();
 
+   curTileX = heroX / tileSize;  
+   curTileY = heroY / tileSize; 
+   curTile = curTileX + (curTileY * tileW);
 
-//  Serial.print(heroX);
-//  Serial.print("   ");
-//  Serial.println(heroY);
+
 }

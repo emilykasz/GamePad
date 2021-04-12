@@ -47,26 +47,26 @@ void getControls() {
     }
     //Serial.println();
 
-  joystickBufferX = analogRead(joystickPins[0]);
-  joystickBufferY = analogRead(joystickPins[1]);
+  int rawjoystickBufferY = analogRead(joystickPins[0]);
+  int rawjoystickBufferX = analogRead(joystickPins[1]);
 
-  if (joystickBufferX < 400) {
+  if (rawjoystickBufferX < 400) {
     joystickBufferX = -1;
   }
-  else if (joystickBufferX > 600) {
+  else if (rawjoystickBufferX > 600) {
     joystickBufferX = 1;
   }
-  else if (joystickBufferX > 400 && joystickBufferX < 600) {
+  else if (rawjoystickBufferX > 400 && rawjoystickBufferX < 600) {
     joystickBufferX = 0;
   }
 
-  if (joystickBufferY < 400) {
-    joystickBufferY = 1;
-  }
-  else if (joystickBufferY > 600) {
+  if (rawjoystickBufferY < 400) {
     joystickBufferY = -1;
   }
-  else if (joystickBufferY > 400 && joystickBufferY < 600) {
+  else if (rawjoystickBufferY > 600) {
+    joystickBufferY = 1;
+  }
+  else if (rawjoystickBufferY > 400 && rawjoystickBufferY < 600) {
     joystickBufferY = 0;
   }
 
