@@ -7,11 +7,10 @@ int currentMode;
 #include "frame.h"
 #include "screen.h"
 #include "tile.h"
-
 #include "controls.h" 
 #include "interaction.h" 
 #include "hero.h"
-
+#include "enemy.h"
 #include "modes.h"
 #include "status.h"
 
@@ -25,6 +24,7 @@ void setup() {
   initHero();
   initMode();
   initNeighbors();
+  randomSeed(analogRead(A9));
 }
 
 void loop() {
@@ -32,16 +32,10 @@ void loop() {
   getControls();
   runMode();
   //checkFrame();
-  
-  
   tft.updateScreen();
   
-  //screenTest();
-  //drawLevel(0);
-  //drawHero();
-  //introScreen(); 
 
-//  Serial.print (heroX); 
-//  Serial.print ("   ");
-//  Serial.println (heroY);
+  Serial.print (heroX); 
+  Serial.print ("   ");
+  Serial.println (heroY);
 }

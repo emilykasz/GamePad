@@ -70,7 +70,7 @@ void firstLevel() {
 
   drawLevel(0);
   drawHero();
-
+  
 }
 
 void secondLevel() {
@@ -82,6 +82,8 @@ void secondLevel() {
     drawHeart3();
     tft.updateScreen();
     initSecondLevel = true;
+    enemyX = 20;
+    enemyY = 40; 
   }
   if(interaction[currentMode][curTile] == 0x03){
   currentMode = currentMode + 1;
@@ -97,6 +99,7 @@ if(interaction[currentMode][curTile] == 0x02){
   heroY = 120;
 }
   drawLevel(1);
+  drawEnemy();
   drawHero();
 
 }
@@ -110,6 +113,8 @@ void thirdLevel() {
     drawHeart3();
     tft.updateScreen();
     initThirdLevel = true;
+    enemyX = 150;
+    enemyY = 100;
   }
 
  
@@ -144,6 +149,7 @@ if(interaction[currentMode][curTile] == 0x04){
 }
 
   drawLevel(2);
+  drawEnemy();
   drawHero();
 }
 
