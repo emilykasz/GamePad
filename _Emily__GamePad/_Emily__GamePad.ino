@@ -11,8 +11,9 @@ int currentMode;
 #include "interaction.h" 
 #include "hero.h"
 #include "enemy.h"
+#include "fight.h"
 #include "modes.h"
-#include "status.h"
+
 
 
 
@@ -35,7 +36,7 @@ void loop() {
   tft.updateScreen();
   
 
-  Serial.print (heroX); 
-  Serial.print ("   ");
-  Serial.println (heroY);
+//  Serial.print (heroX); 
+//  Serial.print ("   ");
+//  Serial.println (heroY);
 }

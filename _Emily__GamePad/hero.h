@@ -78,7 +78,7 @@ void drawHero() {
   
 
   boolean canMove = checkMove(currentMode, nextX, nextY, heroW, heroH);
-
+ 
   if (canMove == true) {
     heroX=nextX; 
     heroY=nextY;

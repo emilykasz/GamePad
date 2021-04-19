@@ -13,7 +13,6 @@ float enemyY = 0;
 float enemyYDir = 0; //moving up = -1, moving right = 1
 int enemyW = 32;
 int enemyH = 32;
-int enemyStatus = 1; // i dont know if i will need this
 int enemyType = 0; // 0 = doctor, 1 = receptionist 
 int enemySmart = 3;
 float enemySpeed = 0.3;
@@ -53,45 +52,38 @@ void drawEnemy() {
     enemyY = nextYEnemy;
   }
 
-//  if (currentMode == 3) {
-//    enemyStatus = 0;
-//  }
-//
-//  if (currentMode == 2) {
-//    enemyStatus = 1;
-//  }
+
+  if (currentMode == 1) {
+    enemyType = 1;
+  }
+  if (currentMode == 2) {
+    enemyType = 0;
+  }
 
   
-  if (enemyXDir == 1 && enemyStatus == 0) {
+  if (enemyXDir == 1 && enemyType == 0) {
+    enemyFrame = 2;
+    if (enemyFrameTimer.check()) {
+      enemyFrame = 2 + (enemyFrame + 1) % 2;
+    }
+  }
+  if (enemyXDir == -1 && enemyType == 0) {
     enemyFrame = 0;
     if (enemyFrameTimer.check()) {
       enemyFrame = 0 + (enemyFrame + 1) % 2;
-      //enemyFrame = enemyFrame + 1;
-    }
-  }
-  if (enemyXDir == -1 && enemyStatus == 0) {
-    if (enemyFrameTimer.check()) {
-      enemyFrame = 2 + (enemyFrame + 1) % 2;
-//      if (enemyFrame < 3) {
-//        enemyFrame = 3;
-//      }
     }
   }
 
-  if (enemyXDir == 1 && enemyStatus == 1) {
-    if (enemyFrameTimer.check()) {
-      enemyFrame = 4 + (enemyFrame + 1) % 2;
-//      if (enemyFrame < 5) {
-//        enemyFrame = 5;
-//      }
-    }
-  }
-  if (enemyXDir == -1 && enemyStatus == 1) {
+  if (enemyXDir == 1 && enemyType == 1) {
+    enemyFrame = 6;
     if (enemyFrameTimer.check()) {
       enemyFrame = 6 + (enemyFrame + 1) % 2;
-//      if (enemyFrame < 7) {
-//        enemyFrame = 7;
-//      }
+    }
+  }
+  if (enemyXDir == -1 && enemyType == 1) {
+    enemyFrame = 4;
+    if (enemyFrameTimer.check()) {
+      enemyFrame = 4 + (enemyFrame + 1) % 2;
     }
   }
   tft.setClipRect(enemyX -2, enemyY -2, 35,35);

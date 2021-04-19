@@ -10,6 +10,10 @@ boolean initFourthLevel;
 boolean initFifthLevel;
 boolean initSixthLevel;
 
+int heart1; 
+int heart2; 
+int heart3;
+
 void initMode() {
   currentMode = -1;
   initIntro = false;
@@ -26,16 +30,8 @@ void initMode() {
 #include "StatusBar_MASK.h"
 #include "StatusBar_PIX.h"
 
-void drawHearts(){
- tft.drawRGBBitmap(20, 210, StatusBar_PIX[0], 20, 20);
-}
-
-void drawHeart2() {
-  tft.drawRGBBitmap(45, 210, StatusBar_PIX[0], 20, 20);
-}
-
-void drawHeart3() {
-  tft.drawRGBBitmap(70, 210, StatusBar_PIX[0], 20, 20);
+void drawHearts(int x, int y){
+ tft.drawRGBBitmap(x, y, StatusBar_PIX[0], 20, 20);
 }
 
 void introScreen() {
@@ -54,9 +50,9 @@ void firstLevel() {
   if (initFirstLevel == false) {
     tft.setClipRect(0, 0, screenW, screenH);
     drawLevel(0);
-    drawHearts();
-    drawHeart2();
-    drawHeart3();
+    drawHearts(5,210);
+    drawHearts(30,210);
+    drawHearts(55,210); 
     tft.updateScreen();
     initFirstLevel = true;
   }
@@ -77,9 +73,9 @@ void secondLevel() {
   if (initSecondLevel == false) {
     tft.setClipRect(0, 0, screenW, screenH);
     drawLevel(1);
-    drawHearts();
-    drawHeart2();
-    drawHeart3();
+    drawHearts(5,210);
+    drawHearts(30,210);
+    drawHearts(55,210); 
     tft.updateScreen();
     initSecondLevel = true;
     enemyX = 20;
@@ -99,8 +95,10 @@ if(interaction[currentMode][curTile] == 0x02){
   heroY = 120;
 }
   drawLevel(1);
+  caught();
   drawEnemy();
   drawHero();
+  
 
 }
 
@@ -108,15 +106,15 @@ void thirdLevel() {
   if (initThirdLevel == false) {
     tft.setClipRect(0, 0, screenW, screenH);
     drawLevel(2);
-    drawHearts();
-    drawHeart2();
-    drawHeart3();
+    drawHearts(5,210);
+    drawHearts(30,210);
+    drawHearts(55,210); 
     tft.updateScreen();
     initThirdLevel = true;
     enemyX = 150;
     enemyY = 100;
   }
-
+ 
  
  if(interaction[currentMode][curTile] == 0x06){
   currentMode = currentMode + 1;
@@ -149,6 +147,7 @@ if(interaction[currentMode][curTile] == 0x04){
 }
 
   drawLevel(2);
+  caught();
   drawEnemy();
   drawHero();
 }
@@ -157,9 +156,9 @@ void fourthLevel() {
   if (initFourthLevel == false) {
     tft.setClipRect(0, 0, screenW, screenH);
     drawLevel(3);
-    drawHearts();
-    drawHeart2();
-    drawHeart3();
+    drawHearts(5,210);
+    drawHearts(30,210);
+    drawHearts(55,210); 
     tft.updateScreen();
     initFourthLevel = true;
   }
@@ -182,9 +181,9 @@ void fifthLevel() {
   if (initFifthLevel == false) {
     tft.setClipRect(0, 0, screenW, screenH);
     drawLevel(4);
-    drawHearts();
-    drawHeart2();
-    drawHeart3();
+    drawHearts(5,210);
+    drawHearts(30,210);
+    drawHearts(55,210);  
     tft.updateScreen();
     initFifthLevel = true;
   }
@@ -207,9 +206,9 @@ void sixthLevel() {
   if (initSixthLevel == false) {
     tft.setClipRect(0, 0, screenW, screenH);
     drawLevel(5);
-    drawHearts();
-    drawHeart2();
-    drawHeart3();
+    drawHearts(5,210);
+    drawHearts(30,210);
+    drawHearts(55,210); 
     tft.updateScreen();
     initSixthLevel = true;
   }
@@ -257,3 +256,11 @@ void runMode() {
       break;
   }
 }
+//
+//if  (drawHearts(20,210)) {
+//  heart1 = 1; 
+//}
+//
+//if (heart1 = 0) {
+//  draw
+//}
