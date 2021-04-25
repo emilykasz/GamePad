@@ -32,11 +32,6 @@ void loop() {
   // put your main code here, to run repeatedly:
   getControls();
   runMode();
-  //checkFrame();
-  tft.updateScreen();
-  
-
-//  Serial.print (heroX); 
-//  Serial.print ("   ");
-//  Serial.println (heroY);
+  //tft.updateScreen();
+  Serial.println(currentMode);
 }

@@ -72,9 +72,9 @@ void drawHero() {
 
    
 //  //Leos eyes light up hearts
-  if (buttonBuffer[0] == 1) {
-      heroFrame = 9;
-  }
+//  if (buttonBuffer[0] == 1) {
+//      heroFrame = 9;
+//  }
   
 
   boolean canMove = checkMove(currentMode, nextX, nextY, heroW, heroH);
